@@ -4,7 +4,10 @@
 Routeur principal
 */
 
+// Route par defaut
+// PATTERN : /
+// CTRL : postsControleur
+// ACTION : index
 
-// PATTERN :
-// CTRL :
-// ACTION :
+include_once '../app/controleurs/postsControleur.php';
+\App\Controleurs\PostsControleur\indexAction($connexion);
