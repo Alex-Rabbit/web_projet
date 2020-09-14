@@ -21,7 +21,7 @@ variables disponibles
             </div>
 
             <div class="blog_details">
-                <a class="d-inline-block" href="single-blog.html">
+                <a class="d-inline-block" href="posts/<?php echo $post['id']; ?>/<?php echo slugify($post['title']); ?>">
                     <h2><?php echo $post['title']; ?></h2>
                 </a>
                 <p><?php echo $post['content']; ?>.</p>
