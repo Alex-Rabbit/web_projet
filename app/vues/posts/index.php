@@ -25,9 +25,10 @@ variables disponibles
                     <h2><?php echo $post['title']; ?></h2>
                 </a>
                 <p><?php echo $post['content']; ?>.</p>
-                <ul class="blog-info-link">
-                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                </ul>
+                <?php
+                  include_once '../app/controleurs/tagsControleur.php';
+                  \App\Controleurs\TagsControleur\indexByPostIdAction($connexion, $post['id']);
+                ?>
             </div>
         </article>
       <?php endforeach; ?>
