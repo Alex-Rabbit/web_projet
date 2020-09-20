@@ -2,9 +2,9 @@
 /*
 ./app/vues/posts/show.php
 variables disponibles
-  *post: ARRAY(id, title, content, created_at, image, author_id, categorie_id))
-  *author: ARRAY(id, firstname, lastname, biography, avatar, created_at)
- */
+  - $post: ARRAY(id, title, content, created_at, image, author_id, categorie_id))
+  - $author: ARRAY(id, firstname, lastname, biography, avatar, created_at)
+*/
 ?>
 <div class="single-post">
    <div class="feature-img">

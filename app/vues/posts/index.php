@@ -2,7 +2,7 @@
 /*
 ./app/vues/posts/index.php
 variables disponibles
-  *posts: ARRAY(ARRAY(id, title, content, created_at, image, author_id, categorie_id))
+  - $posts: ARRAY(ARRAY(id, title, content, created_at, image, author_id, categorie_id))
  */
 ?>
     <div class="blog_left_sidebar">

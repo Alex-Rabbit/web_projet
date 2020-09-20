@@ -2,8 +2,8 @@
 /*
 ./app/vues/authors/show.php
 variables disponibles
-  *author: ARRAY(id, firstname, lastname, biography, avatar, created_at)
- */
+  - $author: ARRAY(id, firstname, lastname, biography, avatar, created_at)
+*/
  ?>
  <div class="blog-author">
     <div class="media align-items-center">
