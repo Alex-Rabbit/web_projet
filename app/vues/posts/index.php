@@ -13,7 +13,7 @@ variables disponibles
       ?>
         <article class="blog_item">
             <div class="blog_item_img">
-                <img class="card-img rounded-0" src="<?php echo $post['image']; ?>" alt="">
+                <img class="card-img rounded-0" src="image/<?php echo $post['image']; ?>" alt="">
                 <a href="#" class="blog_item_date">
                     <h3><?php echo date('d', $date); ?></h3>
                     <p><?php echo date('M', $date); ?></p>
