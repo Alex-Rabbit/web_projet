@@ -12,6 +12,13 @@ RewriteEngine on
 # Règles de réécriture d'URL :
 #-----------------------------------------------
 
+# Route d'une catégorie--------------
+  # Détail d'une categorie
+  # PATTERN : posts/{id}/{slug}
+  # URL: index.php?categorieId=X
+  RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postId=$1 [L]
+
+# Route d'un post--------------
   # Détail d'un post
   # PATTERN : posts/{id}/{slug}.html  (titre = Article 1) => (slug: article-1)
   # URL: index.php?Id=X
