@@ -14,9 +14,9 @@ RewriteEngine on
 
 # Route d'une catégorie--------------
   # Détail d'une categorie
-  # PATTERN : posts/{id}/{slug}
+  # PATTERN : categories/{id}/{slug}
   # URL: index.php?categorieId=X
-  RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postId=$1 [L]
+  RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?categorieId=$1 [L]
 
 # Route d'un post--------------
   # Détail d'un post

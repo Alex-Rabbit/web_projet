@@ -14,7 +14,7 @@ if (isset($_GET['contact'])):
     include_once '../app/vues/template/partials/_contcat.php';
   $content = ob_get_clean();
 
-// Route d'une catégorie
+// Détails d'une catégorie
 // PATTERN : /index.php?categorieId=x
 // CTRL : categoriesControleur
 // ACTION : show
@@ -22,7 +22,7 @@ elseif (isset($_GET['categorieId'])):
   include_once '../app/controleurs/categoriesControleur.php';
   \App\Controleurs\CategoriesControleur\showAction($connexion, $_GET['categorieId']);
 
-// Route d'un post
+// Détails d'un post
 // PATTERN : /index.php?postId=x
 // CTRL : postsControleur
 // ACTION : show
@@ -36,6 +36,10 @@ elseif (isset($_GET['postId'])):
 // ACTION : index
 else:
   include_once '../app/controleurs/postsControleur.php';
-  \App\Controleurs\PostsControleur\indexAction($connexion);
+  \App\Controleurs\PostsControleur\indexAction($connexion, [
+    'orderBy'   => 'created_at',
+    'orderSens' => 'DESC',
+    'limit' => 10
+  ]);
 
 endif;

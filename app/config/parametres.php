@@ -8,6 +8,9 @@ Parametres de l'application
   $content = '';
   $title = '';
 
+// TEXTE
+  define('TITRE_POSTS_INDEX', "Liste des posts");
+
 // Parametres de connexion
   define('HOSTNAME', 'localhost');
   define('DBNAME', 'wed_project');

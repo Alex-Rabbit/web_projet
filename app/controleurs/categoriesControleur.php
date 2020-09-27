@@ -1,22 +1,39 @@
 <?php
 /*
-./app/controleurs/categoriesControleur.php
+./app/controleurs/postsControleur.php
 */
 
 namespace App\Controleurs\CategoriesControleur;
 use \App\Modeles\CategoriesModele;
 
-function showAction(\PDO $connexion, int $id) {
-  // Je demande la categorie au modèle
+/**
+ * [indexAction description]
+ * @param  PDO    $connexion [description]
+ */
+function indexAction(\PDO $connexion, array $params = []) {
+  // Je demande la liste des categories au modele
     include_once '../app/modeles/categoriesModele.php';
-    $category = CategoriesModele\findOneByID($connexion, $id);
+    $categories = CategoriesModele\findAll($connexion, $params);
 
-    include_once '..app/modeles/postsModele.php';
-    $posts = \App\Modeles\Posts\findAllByCategorie($connexion, $id);
+  // Je charge directement la vue index
+    include '../app/vues/categories/index.php';
+}
+
+function showAction(\PDO $connexion, $id) {
+  // Je demande la categorie au modele
+    include_once '../app/modeles/categoriesModele.php';
+    $categorie = CategoriesModele\findOneById($connexion, $id);
+
+    include_once '../app/modeles/postsModele.php';
+    $posts = \App\Modeles\postsModele\findAll($connexion, [
+      'categorie' => $id,
+      'orderBy'   => 'created_at',
+      'orderSens' => 'DESC'
+    ]);
 
   // Je charge la vue show dans $content
   GLOBAL $title, $content;
-  $title = $category['title'];
+  $title = $categorie['name'];
   ob_start();
     include '../app/vues/categories/show.php';
   $content = ob_get_clean();

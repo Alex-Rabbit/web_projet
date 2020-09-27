@@ -1,29 +1,48 @@
 <?php
 /*
 ./app/modeles/categoriesModele.php
+Modele des categories
 */
 
 namespace App\Modeles\CategoriesModele;
 
 /**
  * [findAll description]
- * @param  PDO   $connexion [description]
- * @return array            [description]
+ * @param  PDO    $connexion [description]
+ * @param  array  $params    [description]
+ * @return [type]            [description]
  */
-function findAll(\PDO $connexion) :array {
+function findAll(\PDO $connexion, array $params = []) {
+  $params_default = [
+    'categorie' => null,
+    'orderBy'   => 'id',
+    'orderSens' => 'ASC',
+    'limit'     => null
+  ];
+  $params = array_merge($params_default, $params);
+
+  $orderBY   = htmlentities($params['orderBy']);
+  $orderSens = htmlentities($params['orderSens']);
+
   $sql = "SELECT *
           FROM categories
-          ORDER BY name ASC;";
-  $rs = $connexion->query($sql);
+          ORDER BY $orderBY $orderSens ";
+  $sql .= ($params['limit'] !== null)?" LIMIT :limit ;":';';
+
+  $rs = $connexion->prepare($sql);
+  if ($params['limit'] !== null):
+    $rs->bindValue(':limit', $params['limit'], \PDO::PARAM_INT);
+  endif;
+  $rs->execute();
   return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
 
-function findOneByID(\PDO $connexion, int $id) :array {
+function findOneById(\PDO $connexion, int $id){
   $sql = "SELECT *
           FROM categories
-          WHERE id = id;";
+          WHERE id = :id;";
   $rs = $connexion->prepare($sql);
-  $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+  $rs->bindvalue(':id', $id, \PDO::PARAM_STR);
   $rs->execute();
-  return $rs->fetchAll(\PDO::FETCH_ASSOC);
+  return $rs->fetch(\PDO::FETCH_ASSOC);
 }
