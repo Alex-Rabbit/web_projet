@@ -12,6 +12,11 @@ RewriteEngine on
 # Règles de réécriture d'URL :
 #-----------------------------------------------
 
+// Déconnection du user
+// PATTERN : user/logout
+// URL : index.php?user=logout
+RewriteRule ^user\/logout$ index.php?user=logout [L]
+
 #-----------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
 RewriteRule ^(.*)$ index.php [L]
