@@ -9,7 +9,6 @@ variables disponibles
 <div class="blog_left_sidebar">
 
   <!-- Listes des posts -->
-  <h1>Poste de la catégorie : <?php echo $categorie['name']; ?></h1>
 
   <?php include '../app/vues/posts/list.php'; ?>
 

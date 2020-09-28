@@ -37,3 +37,13 @@ function findAllByPostId(\PDO $connexion, int $postId) :array {
   $rs->execute();
   return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+function findOneById(\PDO $connexion, int $id){
+  $sql = "SELECT *
+          FROM tags
+          WHERE id =:id;";
+  $rs = $connexion->prepare($sql);
+  $rs->bindvalue(':id', $id, \PDO::PARAM_STR);
+  $rs->execute();
+  return $rs->fetch(\PDO::FETCH_ASSOC);
+}

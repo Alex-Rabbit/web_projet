@@ -12,17 +12,40 @@ RewriteEngine on
 # Règles de réécriture d'URL :
 #-----------------------------------------------
 
+# Formulaire de connexion au backoffice--------------
+  # PATTERN : users/loginForm
+  # URL: index.php?users=login
+  RewriteRule ^users\/login$ index.php?users=loginForm [L]
+
+# Traitement du formulaire de connexion au backoffice--------------
+  # PATTERN : users/login/submit
+  # URL: index.php?users=loginCheck
+  RewriteRule ^users\/login\/submit$ index.php?users=loginCheck [L]
+
+# Route d'un tag--------------
+  # Détail d'un tag
+  # PATTERN : tags/{id}/{slug}
+  # URL: index.php?tags=show&id=X
+  RewriteRule ^tags\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?tags=show&id=$id [L]
+
 # Route d'une catégorie--------------
   # Détail d'une categorie
   # PATTERN : categories/{id}/{slug}
-  # URL: index.php?categorieId=X
-  RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?categorieId=$1 [L]
+  # URL: index.php?categories=show&id=X
+  RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?categories=show&id=$1 [L]
+
+#ROUTE DES POSTS--------------------------
+
+# Recherche d'un post--------------
+  # PATTERN : posts/search
+  # URL: index.php?posts=search
+  RewriteRule ^posts\/search$ index.php?posts=search [L]
 
 # Route d'un post--------------
   # Détail d'un post
   # PATTERN : posts/{id}/{slug}.html  (titre = Article 1) => (slug: article-1)
-  # URL: index.php?Id=X
-  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?postId=$1 [L]
+  # URL: index.php?posts=show&id=x
+  RewriteRule ^posts\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)$ index.php?posts=show&id=$1 [L]
 
 #-----------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]

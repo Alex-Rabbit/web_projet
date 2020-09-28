@@ -9,7 +9,7 @@ variables disponibles
 <ul class="list">
   <?php foreach ($tags as $tag): ?>
     <li>
-      <a href="#">
+      <a href="tags/<?php echo $tag['id']; ?>/<?php echo slugify($tag ['name']); ?>">
         <p><?php echo $tag['name']; ?> (<?php echo $tag['nbrePosts']; ?>)</p>
       </a>
     </li>
