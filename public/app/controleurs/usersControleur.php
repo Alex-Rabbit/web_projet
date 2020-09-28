@@ -18,9 +18,9 @@ function loginCheckAction(\PDO $connexion) {
   include_once '../app/modeles/usersModele.php';
   $user = UsersModele\findOneByLoginPassword($connexion, $_POST['login'], $_POST['password']);
   if ($user) {
-    header('location: ');
+    header('location: ' . BASE_URL_ADMIN);
   }
   else {
-    header('location: '. BASE_URL .'users/login');
+    header('location: '. BASE_URL_PUBLIC .'users/login');
   }
 }
